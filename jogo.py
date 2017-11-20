@@ -19,23 +19,23 @@ def fight_dragon(player):
 
 
 def get_sword(player):
-    print "Agora você pode dar +3 de danos."
+    print("Agora você pode dar +3 de danos.")
     player.attack += 3
 
 def get_shield(player):
-    print "Agora você tem +3 de defesa."
+    print("Agora você tem +3 de defesa.")
     player.defense += 3
 
 def get_enchanted_sword(player):
-    print "Agora você pode dar +10 de danos."
+    print("Agora você pode dar +10 de danos.")
     player.attack += 10
 
 def get_shield(player):
-    print "Agora você tem +3 de defesa."
+    print("Agora você tem +3 de defesa.")
     player.defense += 3
 
 def get_flaming_shield(player):
-    print "Agora você tem +6 de defesa e +1 de dano"
+    print("Agora você tem +6 de defesa e +1 de dano")
     player.defense += 6
     player.attack += 1
 
@@ -59,42 +59,42 @@ class Fight:
 
     def fight(self):
         while 1:
-            print "Você ataca."
+            print("Você ataca.")
 
             time.sleep(1)
             if random.random() >= 0.2:
-                print "Consegui o golpe ! ", self.enemy.name, " levou ", self.player.attack, " de danos !"
+                print("Consegui o golpe ! ", self.enemy.name, " levou ", self.player.attack, " de danos !")
                 damage = self.player.attack - self.enemy.defense
                 if damage < 0:
                     damage = 0
                 self.enemy.life -= damage
-                print self.enemy.name, ' esta com ', self.enemy.life, ' de vida.'
+                print(self.enemy.name, ' esta com ', self.enemy.life, ' de vida.')
             else:
-                print "O ", self.enemy.name, " esquivou o seu ataque :("
+                print("O ", self.enemy.name, " esquivou o seu ataque :(")
 
             if self.enemy.life <= 0:
-                print self.enemy.name, " está morto, você ganhou !"
+                print(self.enemy.name, " está morto, você ganhou !")
                 return 0
 
-            print self.enemy.name, " ataca."
+            print(self.enemy.name, " ataca.")
 
             time.sleep(1)
             if random.random() >= 0.4:
-                print "Ele acerta em você ! Você levou ", self.enemy.attack, " de danos !"
+                print("Ele acerta em você ! Você levou ", self.enemy.attack, " de danos !")
                 damage = self.enemy.attack - self.player.defense
                 if damage < 0:
                     damage = 0
                 self.player.life -= damage
-                print "Você esta com ", self.player.life, " de vida."
+                print("Você esta com ", self.player.life, " de vida.")
             else:
-                print "Você esquivou o ataque."
+                print("Você esquivou o ataque.")
 
             if self.player.life <= 0:
-                print "Você está morto, você perdeu :("
+                print("Você está morto, você perdeu :(")
                 return 1
 
-            print "-- Continuar --"
-            raw_input()
+            print("-- Continuar --")
+            input()
 
 
 class Enemy:
@@ -114,17 +114,17 @@ class Player:
 
     def goto_room(self, position):
         if position in room:
-            print position, " : " , room[position][0],
+            print(position, " : " , room[position][0], end=' ')
 
             action = room[position][1]
         else:
-            print "Entrou numa sala sombria .... "
+            print("Entrou numa sala sombria .... ")
             action = None
 
         self.position = position
 
         if action is None:
-            print " [N, S, L, O] ? "
+            print(" [N, S, L, O] ? ")
         else:
             action(self)
 
@@ -132,7 +132,7 @@ class Player:
     def play(self):
         self.goto_room((2, 2))
         while 1:
-            next_action = raw_input()
+            next_action = input()
             position = self.position
             if next_action == 'N':
                 position = (position[0], position[1]+1)
@@ -143,12 +143,12 @@ class Player:
             elif next_action == 'L':
                 position = (position[0] + 1, position[1])
             else:
-                print "Não entendi !"
+                print("Não entendi !")
                 continue
 
             if position[0] < 0 or position[0] >= MAX_ROW \
                     or position[1] < 0 or position[1] >= MAX_LINE:
-                print "Você não pode ir nesta direção, tem uma parede !"
+                print("Você não pode ir nesta direção, tem uma parede !")
                 self.goto_room(self.position)
                 continue
 
