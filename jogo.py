@@ -94,16 +94,16 @@ def get_flaming_shield(player):
     player.attack += 1
 
 def get_god_bracelet(player):
-    print("Uma luz aparece no teto, você pega a pulseira e ganha +50 de ataque")
-    player.attack += 50
+    print("Uma luz aparece no teto, você pega a pulseira e ganha +15 de ataque")
+    player.attack += 15
 
 def get_mega_sword(player):
-    print("O chão se abre e num raio se levanta a mega espada ! Você tem +100 de danos")
-    player.attack += 100
+    print("O chão se abre e num raio se levanta a mega espada ! Você tem +30 de danos")
+    player.attack += 30
 
 def get_lightning_shield(player):
-    print("Na parede você encontra o Escudo dos Raios. Você tem +100 de defesa e +10 de ataque")
-    player.defense += 100
+    print("Na parede você encontra o Escudo dos Raios. Você tem +20 de defesa e +10 de ataque")
+    player.defense += 20
     player.attack += 10
 
 def get_life_potion(player):
@@ -115,23 +115,12 @@ def get_mini_life(player):
     player.life += 30
 
 def get_protection_googles(player):
-    print("Você coloca os oculos e fica com +20 de proteção")
-    player.defense += 20
+    print("Você coloca os oculos e fica com +3 de proteção")
+    player.defense += 3
 
 def get_gun(player):
-    print("Você ganha +20 de ataque")
-    player.attack += 20
-
-room = {
-        (1,1) : ["Essa sala contem uma espada. Parabéns !", get_sword],
-        (0,1) : ["Essa sala contem uma espada encantada. Parabéns !", get_enchanted_sword],
-        (2, 2):  ["Você está na primeira sala do castelo.", None],
-        (2,0) : ["Nesta sala tem um T-Rex !!!", fight_enemy('trex')],
-        (0,0) : ["Nesta sala tem um Dragão Preto !!!", fight_enemy('dragon')],
-        (1,0) : ["Nesta sala tem um Dragão Laranja !", fight_enemy('dragon')],
-        (0,2) : ["Você achou um escudo. Ele vai te proteger", get_shield],
-        (1,2) : ["Você achou um escudo em chamas. Ele vai te proteger e machucar os inimigos.", get_flaming_shield]
-        }
+    print("Você ganha +10 de ataque")
+    player.attack += 10
 
 room = {
         (0,0) : ["THE KING ESTA NESTA SALA ! TEMA-ME !!!!", fight_enemy('king_dragon')],
