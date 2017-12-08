@@ -59,6 +59,13 @@ class Fight:
             print("-- Continuar --")
             input()
 
+def fight_enemy(name):
+    enemy = Enemy(*MONSTERS[name])
+    fight = Fight(enemy)
+    return fight.fight
+
+
+########## AQUI COMECA O JOGO
 
 MONSTERS = {
 "trex": ["T-Rex", 20, 1, 2],
@@ -71,10 +78,6 @@ MONSTERS = {
 "spikes_monster": ["Monstro de espinhos", 30, 8, 2]
 }
 
-def fight_enemy(name):
-    enemy = Enemy(*MONSTERS[name])
-    fight = Fight(enemy)
-    return fight.fight
 
 
 def get_sword(player):
@@ -139,6 +142,8 @@ room = {
         (1,2) : ["Pppissss ...", fight_enemy('snake')],
         (2,2) : ["3 cabeças ??!!", fight_enemy('three_head_dragon')]
         }
+
+#### AQUI ACABA
 
 
 class Player:
