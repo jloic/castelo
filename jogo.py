@@ -110,18 +110,24 @@ class Player:
         self.life = 20
         self.attack = 1
         self.defense = 1
+        self.visited = []
         pass
 
     def goto_room(self, position):
-        if position in room:
-            print(position, " : " , room[position][0], end=' ')
-
-            action = room[position][1]
-        else:
-            print("Entrou numa sala sombria .... ")
-            action = None
-
         self.position = position
+        action = None
+        if position in self.visited:
+            print("Entrou numa sala que já visitou")
+        else:
+            self.visited.append(position)
+
+            if position in room:
+                print(position, " : " , room[position][0], end=' ')
+
+                action = room[position][1]
+            else:
+                print("Entrou numa sala sombria .... ")
+
 
         if action is None:
             print(" [N, S, L, O] ? ")
