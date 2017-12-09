@@ -4,8 +4,8 @@ import sys
 import time
 import random
 
-MAX_ROW = 4
-MAX_LINE = 4
+MAX_ROW = 5
+MAX_LINE = 5
 
 class Enemy:
     def __init__(self, name, life, defense, attack):
@@ -64,18 +64,18 @@ def fight_enemy(name):
     fight = Fight(enemy)
     return fight.fight
 
-
 ########## AQUI COMECA O JOGO
 
 MONSTERS = {
 "trex": ["T-Rex", 20, 1, 2],
-"monster_frog": ["Sapinho monstro", 30, 2,5],
 "snake":["Cobra dos hits", 40, 1, 8],
 "three_head_dragon": ["Dragão de 3 cabeças", 50, 5, 2],
 "gods_snake": ["Cobra dos deuses", 40, 1, 6],
 "dragon" : ["Dragão", 30, 2, 6],
 "king_dragon": ["Dragão Rei", 100, 8, 20],
-"spikes_monster": ["Monstro de espinhos", 30, 8, 2]
+"spikes_monster": ["Monstro de espinhos", 30, 8, 2],
+"monster_frog": ["Sapinho monstro", 30, 2,5],
+"monstro_raio":["fera de Raios", 50, 2, 9],
 }
 
 
@@ -111,8 +111,8 @@ def get_lightning_shield(player):
     player.attack += 10
 
 def get_life_potion(player):
-    print("Você bebe o frasco e ganha +200 de vida")
-    player.life += 200
+    print("Você bebe o frasco e ganha +100 de vida")
+    player.life += 100
 
 def get_mini_life(player):
     print("Você bebe o frasco e ganha +30 de vida")
@@ -124,7 +124,11 @@ def get_protection_googles(player):
 
 def get_gun(player):
     print("Você ganha +10 de ataque")
-    player.attack += 10
+    player.attack+=10
+
+def get_vara_de_som(player):
+    print("você ganha +12 de ataque" )
+    player.attack+=12
 
 room = {
         (0,0) : ["THE KING ESTA NESTA SALA ! TEMA-ME !!!!", fight_enemy('king_dragon')],
@@ -140,7 +144,9 @@ room = {
         (2,3) : ["Uma mini-poção...", get_mini_life],
         (3,2) : ["Essa sala tem uma arminha !", get_gun],
         (1,2) : ["Pppissss ...", fight_enemy('snake')],
-        (2,2) : ["3 cabeças ??!!", fight_enemy('three_head_dragon')]
+        (2,2) : ["3 cabeças ??!!", fight_enemy('three_head_dragon')],
+        (3,0) : ["tiun tiun dzzzzzzr", fight_enemy ('monstro_raio')],    
+        (0,4) : ["uaun", get_vara_de_som ]
         }
 
 #### AQUI ACABA
@@ -176,7 +182,7 @@ class Player:
 
 
     def play(self):
-        self.goto_room((3, 3))
+        self.goto_room((4, 4))
         while 1:
             next_action = input()
             position = self.position
